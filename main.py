@@ -47,8 +47,8 @@ url = "https://api.open-meteo.com/v1/forecast"
 params = {
 	"latitude": 41.5165,
 	"longitude": -8.7848,
-	"daily": ["sunrise", "sunset", "uv_index_max", "daylight_duration"],
-	"hourly": ["temperature_2m", "apparent_temperature", "precipitation_probability", "uv_index", "wind_speed_10m", "wind_direction_10m", "wind_gusts_10m"],
+	"daily": ["wave_height_max","wave_direction_dominant","wave_period_max"],
+	"hourly": ["wave_height","wave_direction","wave_period","wind_wave_peak_period","wind_wave_height","wind_wave_direction","wind_wave_period","sea_level_height_msl","sea_surface_temperature","swell_wave_height","swell_wave_direction","swell_wave_period","swell_wave_peak_period"],
 	"models": "best_match",
 	"current": "temperature_2m",
 	"forecast_days": 3,
@@ -70,13 +70,21 @@ print(f"Current temperature_2m: {current_temperature_2m}")
 
 # Process hourly data. The order of variables needs to be the same as requested.
 hourly = response.Hourly()
-hourly_temperature_2m = hourly.Variables(0).ValuesAsNumpy()
-hourly_apparent_temperature = hourly.Variables(1).ValuesAsNumpy()
-hourly_precipitation_probability = hourly.Variables(2).ValuesAsNumpy()
-hourly_uv_index = hourly.Variables(3).ValuesAsNumpy()
-hourly_wind_speed_10m = hourly.Variables(4).ValuesAsNumpy()
-hourly_wind_direction_10m = hourly.Variables(5).ValuesAsNumpy()
-hourly_wind_gusts_10m = hourly.Variables(6).ValuesAsNumpy()
+hourly_wave_height = hourly.Variables(0).ValuesAsNumpy()
+hourly_wave_direction = hourly.Variables(1).ValuesAsNumpy()
+hourly_wave_period = hourly.Variables(2).ValuesAsNumpy()
+hourly_wind_wave_peak_period = hourly.Variables(3).ValuesAsNumpy()
+hourly_wind_wave_height = hourly.Variables(4).ValuesAsNumpy()
+hourly_wind_wave_direction = hourly.Variables(5).ValuesAsNumpy()
+hourly_wind_wave_period = hourly.Variables(6).ValuesAsNumpy()
+hourly_sea_level_height_msl = hourly.Variables(7).ValuesAsNumpy()
+hourly_sea_surface_temperature = hourly.Variables(8).ValuesAsNumpy()
+hourly_swell_wave_height = hourly.Variables(9).ValuesAsNumpy()
+hourly_swell_wave_direction = hourly.Variables(10).ValuesAsNumpy()
+hourly_swell_wave_period = hourly.Variables(11).ValuesAsNumpy()
+hourly_swell_wave_peak_period = hourly.Variables(12).ValuesAsNumpy()
+
+
 
 hourly_data = {"date": pd.date_range(
 	start = pd.to_datetime(hourly.Time(), unit = "s", utc = True),
@@ -85,13 +93,19 @@ hourly_data = {"date": pd.date_range(
 	inclusive = "left"
 )}
 
-hourly_data["temperature_2m"] = hourly_temperature_2m
-hourly_data["apparent_temperature"] = hourly_apparent_temperature
-hourly_data["precipitation_probability"] = hourly_precipitation_probability
-hourly_data["uv_index"] = hourly_uv_index
-hourly_data["wind_speed_10m"] = hourly_wind_speed_10m
-hourly_data["wind_direction_10m"] = hourly_wind_direction_10m
-hourly_data["wind_gusts_10m"] = hourly_wind_gusts_10m
+hourly_data["wave_height"] = hourly_wave_height
+hourly_data["wave_direction"] = hourly_wave_direction
+hourly_data["wave_period"] = hourly_wave_period
+hourly_data["wind_wave_peak_period"] = hourly_wind_wave_peak_period
+hourly_data["wind_wave_height"] = hourly_wind_wave_height
+hourly_data["wind_wave_direction"] = hourly_wind_wave_direction
+hourly_data["wind_wave_period"] = hourly_wind_wave_period
+hourly_data["sea_level_height_msl"] = hourly_sea_level_height_msl
+hourly_data["sea_surface_temperature"] = hourly_sea_surface_temperature
+hourly_data["swell_wave_height"] = hourly_swell_wave_height
+hourly_data["swell_wave_direction"] = hourly_swell_wave_direction
+hourly_data["swell_wave_period"] = hourly_swell_wave_period
+hourly_data["swell_wave_peak_period"] = hourly_swell_wave_peak_period
 
 hourly_dataframe = pd.DataFrame(data = hourly_data)
 print("\nHourly data\n", hourly_dataframe)
