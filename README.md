@@ -16,12 +16,12 @@ Os dados são obtidos em formato JSON e processados para extrair informações d
 1. **Recolha dos dados**
     - Os dados são obtidos através de dois endpoints da Open-Meteo:
 
-    - A resposta traz variáveis Marítimas (ondas, direção, swell, etc.) e diárias (Onda máxima e Direção Dominante).  
+    - O endpoint abaixo conecta á api maritima e tráz variáveis Marítimas (ondas, direção, swell, etc.) e diárias (Onda máxima e Direção Dominante).  
      ```
      https://marine-api.open-meteo.com/v1/marine
      ```
     
-    - A resposta inclui variáveis horárias (temperatura, vento, percipitação etc.) e diárias (nascer/pôr do sol, duração do dia, UV).
+    - O endpoint abaixo conecta á api de forecast e tráz variáveis horárias (temperatura, vento, percipitação etc.) e diárias (nascer/pôr do sol, duração do dia, UV).
      ```
      https://marine-api.open-meteo.com/v1/forecast
      ```
