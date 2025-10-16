@@ -29,6 +29,35 @@ Este projeto visa desenvolver uma solução para manipular dados metereológicos
 
 ---
 
+## Estrutura do Projeto
+-   [doc/](./SurfCast/doc)
+
+    -   Contém a documentação do projeto.
+        -   [n-04-refman.pdf](./doc/n-04-refman.pdf)
+            -   Documentação do projeto da aplicação informática.
+-   [surf_data/](./surf_data/)
+
+    -   Armazena os JSON's obtidos da API.
+        -   [daily_data.json](./surf_data/daily_data.json)
+            -   Registo diários.
+        -   [hourly_data.json](./surf_data/hourly_data.json)
+            -   Registo horário.
+-   [Workflows/](./Workflows)
+    -   Contém os workflows do Knime.
+-   [README.md](README.md)
+    -   Arquivo que contém informações básicas sobre o projeto, a sua descrição, uso e outras instruções.
+-   [main.py](main.py)
+    -   Arquivo python que é o cérebro.
+
+### Descrição da Estrutura
+
+Este projeto está organizado de forma a separar claramente os componentes do código-fonte, dados e documentação.
+
+Os diretórios *doc/* e *surf_data/* contêm a o relatório do projeto e os dados obtidos pelo programa, respetivamente.
+
+
+Já o diretório *Workflows/* contém os workflows do Knime.
+
 ## ⚙️ Fluxo de trabalho
 
 1. **Recolha dos dados**
@@ -52,8 +81,3 @@ Este projeto visa desenvolver uma solução para manipular dados metereológicos
     - São extraídos e normalizados os campos de interesse para posterior análise e visualização.
 ---
 
-## 🕓 Conversão de `daylight_duration` de segundos para formato `HH:MM`
-
-Os valores da duração do dia vêm da API em **segundos** (ex: `40491.45`) e são convertidos para o formato legível `HH:MM` (ex: `11:14`).
-
-### 🧩 Implementação em KNIME
