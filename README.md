@@ -15,20 +15,22 @@ Os dados são obtidos em formato JSON e processados para extrair informações d
 
 1. **Recolha dos dados**
     - Os dados são obtidos através de dois endpoints da Open-Meteo:
+
+    - A resposta traz variáveis Marítimas (ondas, direção, swell, etc.) e diárias (Onda máxima e Direção Dominante).  
      ```
      https://marine-api.open-meteo.com/v1/marine
      ```
-    - A resposta traz variáveis Marítimas (ondas, direção, swell, etc.) e diárias (Onda máxima e Direção Dominante).  
+    
+    - A resposta inclui variáveis horárias (temperatura, vento, percipitação etc.) e diárias (nascer/pôr do sol, duração do dia, UV).
      ```
      https://marine-api.open-meteo.com/v1/forecast
      ```
-    - A resposta inclui variáveis horárias (temperatura, vento, percipitação etc.) e diárias (nascer/pôr do sol, duração do dia, UV).
 
 2. **Conversão dos dados em KNIME**
     - O JSON gerado pela API é importado para o KNIME utilizando o nó **JSON Reader**.
     - São extraídos e normalizados os campos de interesse para posterior análise e visualização.
 3. **Conexão de dados no KNIME**
-    - Uma conexção à API é usado através do nó **JSON Reader**.
+    - Uma conexção à API é usado através do nó **Get Request**.
     - São extraídos e normalizados os campos de interesse para posterior análise e visualização.
 ---
 
