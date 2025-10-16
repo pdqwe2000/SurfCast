@@ -18,6 +18,9 @@ Os dados são obtidos em formato JSON e processados para extrair informações d
      ```
      https://marine-api.open-meteo.com/v1/marine
      ```
+        ```
+     https://marine-api.open-meteo.com/v1/forecast
+     ```
    - A resposta inclui variáveis horárias (ondas, temperatura, etc.) e diárias (nascer/pôr do sol, duração do dia, UV...).
 
 2. **Conversão dos dados em KNIME**
