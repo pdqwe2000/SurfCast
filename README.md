@@ -1,7 +1,25 @@
 # 🌊 SurfCast – Ocean & Weather Forecast Data Processing
 
+Integração de Sistemas de Informação
+
+Licenciatura em Engenharia de Sistemas Informáticos (*regime pós-laboral*) 2025-26
+
+
+| Número | Nome |
+| -----   | ---- |
+| 27990     | Pedro Duarte  |
+
+## Organização
+
+[surf_data/](./surf_data/)  dados recebidos da API após ser processados pelo Python
+
+[Workflows/](./Workflows/)  Workflows para tratamento de dados, conexões à API 
+
+## Introdução
 Este projeto integra dados meteorológicos e marítimos da **Open-Meteo API** para apoiar previsões e análises relacionadas com o **surf**.  
-Os dados são obtidos em formato JSON e processados para extrair informações diárias e horárias como:
+
+## Objetivo
+Este projeto visa desenvolver uma solução para manipular dados metereológicos, utilizando  API's. Os dados são obtidos em e processados para extrair informações diárias e horárias como:
 - Altura e direção das ondas  
 - Período das ondas e ondulação  
 - Temperatura da superfície do mar  
