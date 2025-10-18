@@ -1,0 +1,5 @@
+site_name: SurfCast
+nav:
+  - Home: index.md
+  - About: red.md
+theme: readthedocs
