@@ -41,10 +41,14 @@ Este projeto visa desenvolver uma solução para manipular dados metereológicos
 -   [relatório_ISI/](./SurfCast/relatóri_ISI)
             -   Documentação do projeto.
 -   [surf_data/](./surf_data/)
-    -   Armazena os JSON's obtidos da API.
+    -   Armazena os JSON's obtidos da API junto com a database.
         -   [daily_data.json](./surf_data/daily_data.json)
             -   Registo diários.
         -   [hourly_data.json](./surf_data/hourly_data.json)
+            -   Registo horário.
+        -   [surfcast.db](./surf_data/surfcast.db)
+            -   base de dados sql lite.
+        -   [database_setup.py](./surf_data/database_setup.py)
             -   Registo horário.
 -   [Workflows/](./Workflows)
         -   Contém os workflows do Knime.
@@ -57,12 +61,12 @@ Este projeto visa desenvolver uma solução para manipular dados metereológicos
 
 Este projeto está organizado de forma a separar claramente os componentes do código-fonte, dados e documentação.
 
-Os diretórios *doc/* e *surf_data/* contêm a o relatório do projeto e os dados obtidos pelo programa, respetivamente.
+Os diretórios *relatório_ISI/* e *surf_data/* contêm a o relatório do projeto e os dados obtidos pelo programa bem como a bd sql lite, respetivamente.
 
 
 Já o diretório *Workflows/* contém os workflows do Knime.
 
-##  Fluxo de trabalho
+##  Workflow
 
 1. **Recolha dos dados**
     - Os dados são obtidos através de dois endpoints da Open-Meteo:
@@ -85,6 +89,35 @@ Já o diretório *Workflows/* contém os workflows do Knime.
     - Uma conexção à API é usado através do nó **Get Request**.
     - São extraídos e normalizados os campos de interesse para posterior análise e visualização.
 ---
+### Screenshots
+
+![knime_workflow](img/knime_workflow.png)
+
+*Above: Knime Workflow*
+
+![altura_ondas](img/altura_ondas.png)
+
+*Above: Altura das Ondas*
+
+![dates_before](img/dates_before.png)
+
+*Above: Campos Não Normalizados*
+
+![dates_normalized](img/dates_normalized.png)
+
+*Above: Campos Normalizados*
+
+![rules](img/rules.png)
+
+*Above: Rules*
+
+![rules_applied](img/rules_applied.png)
+
+*Above: Campos Criados pelas rules*
+
+![database](img/database.png)
+
+*Above: Exported Database*
 
 ## Conclusão
 
